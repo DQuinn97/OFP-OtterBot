@@ -1,0 +1,86 @@
+-= Command Log =-
+2020-1-17 21:41:40 ~ OFP-Bot: Command "$addreact 645700070003441704 🛬 <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:42:06 ~ OFP-Bot: Command "$addreact 645700070003441704 ❤️ <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:42:27 ~ OFP-Bot: Command "$delreact 645700070003441704 all" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:42:59 ~ OFP-Bot: Command "$addreact 645700070003441704 ❤️ <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:43:00 ~ OFP-Bot: Command "$addreact 645700070003441704 🛬 <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:43:16 ~ OFP-Bot: Command "$delreact 645700070003441704 all" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:44:59 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:49:54 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'bot-commands' : FAILED
+2020-1-17 21:51:48 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:51:52 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'new-test' : FAILED
+2020-1-17 21:52:00 ~ OFP-Bot: Command "$help react" called by 'Quinn#5186' in channel 'new-test' : FAILED
+2020-1-17 21:52:07 ~ OFP-Bot: Command "$help react.js" called by 'Quinn#5186' in channel 'new-test' : FAILED
+2020-1-17 21:54:06 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'new-test' : FAILED
+2020-1-17 21:54:37 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'new-test' : FAILED
+2020-1-17 21:55:17 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-17 21:55:34 ~ OFP-Bot: Command "$help addreact" called by 'Quinn#5186' in channel 'bot-commands' : SUCCEEDED
+2020-1-17 21:55:42 ~ OFP-Bot: Command "$help react" called by 'Quinn#5186' in channel 'bot-commands' : SUCCEEDED
+2020-1-17 21:57:05 ~ OFP-Bot: Command "$addreact 628083584204537876 🐺 <@&546403450695712768>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 21:58:52 ~ OFP-Bot: Command "$addreact 628083714446065664 🌲 <@&585650090585096222>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 21:59:13 ~ OFP-Bot: Command "$addreact 628083762013536284 ⛏️ <@&588391475109298228>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 21:59:56 ~ OFP-Bot: Command "$addreact 628084034341175326 🔫 <@&620257070574469150>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:00:57 ~ OFP-Bot: Command "$addreact 628084083620184084 💵 <@&594576639535349809>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:01:21 ~ OFP-Bot: Command "$addreact 628084622080868363 💀 <@&612841394222006280>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:01:50 ~ OFP-Bot: Command "$addreact 628084778306109441 🍱 <@&628085641053470768>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:03:03 ~ OFP-Bot: Command "$addreact 628084958896062475 💥 <@&628086106545586176>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:03:28 ~ OFP-Bot: Command "$addreact 628085041917853697 ✨ <@&628078702709833728>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:03:57 ~ OFP-Bot: Command "$addreact 628085373746020362 🚣 <@&585653533722935297>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:04:39 ~ OFP-Bot: Command "$addreact 628086721917091841 🖌️ <@&607267613621485578>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:05:01 ~ OFP-Bot: Command "$addreact 631612348389654528 🏀 <@&631612536894128135>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:05:31 ~ OFP-Bot: Command "$addreact 643916513539260421 ⛳ <@&643916635572273163>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:05:50 ~ OFP-Bot: Command "$addreact 647922344421228547 🦊 <@&647922785011761170>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:06:18 ~ OFP-Bot: Command "$addreact 657299525920096267 👹 <@&657299371926356009>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-17 22:06:43 ~ OFP-Bot: Command "$addreact 658027492682235935 🐉 <@&658027122127798302>" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+2020-1-18 18:42:24 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:43:55 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:43:59 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:44:23 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:44:26 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:44:47 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:44:53 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:47:20 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:47:23 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:50:08 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:50:11 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:50:34 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:50:37 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:52:28 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 18:52:32 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:13:27 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:13:30 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:13:55 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:14:39 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:16:31 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:18:29 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:20:22 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:20:25 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:21:04 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:23:59 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:29:16 ~ OFP-Bot: Command "$reload help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:29:19 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:29:26 ~ OFP-Bot: Command "$help help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:29:34 ~ OFP-Bot: Command "$help react" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-1-18 19:29:46 ~ OFP-Bot: Command "$help addmodrole" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+2020-3-11 16:07:15 ~ OFP-Bot: Command "$help react" called by 'PhoenixGamma#5351' in channel 'admin' : SUCCEEDED
+2020-3-11 16:07:47 ~ OFP-Bot: Command "$help addreact" called by 'PhoenixGamma#5351' in channel 'admin' : SUCCEEDED
+2020-3-11 16:09:23 ~ OFP-Bot: Command "$addreact 687331036161638406 🎆 <@&687330345582198789>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+3/20/2020, 4:50:14 PM ~ OFP-Bot: Command "$addreact 668175220569407523 🐉 <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+3/20/2020, 4:50:32 PM ~ OFP-Bot: Command "$delreact 668175220569407523 ALL" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+3/20/2020, 4:51:29 PM ~ OFP-Bot: Command "$delreact 668175220569407523 ALL" called by 'Quinn#5186' in channel 'new-test' : FAILED
+3/20/2020, 4:51:50 PM ~ OFP-Bot: Command "$delreact 668175220569407523 all" called by 'Quinn#5186' in channel 'new-test' : FAILED
+3/20/2020, 4:54:20 PM ~ OFP-Bot: Command "$addreact 668175220569407523 🐉 <@&498492179300483082>" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+3/20/2020, 4:57:40 PM ~ OFP-Bot: Command "$delreact 668175220569407523 all" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+3/20/2020, 5:09:24 PM ~ OFP-Bot: Command "$addreact 690599840651935795 🌴 <@&690599718274990120>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+3/21/2020, 1:27:57 PM ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED
+4/3/2020, 11:04:03 PM ~ OFP-Bot: Command "$addreact 695770165954084905 🎉 <@&695770425191301230>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+4/5/2020, 2:37:35 PM ~ OFP-Bot: Command "$addreact 696367673608765491 🚧 <@&696367379130744932>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+4/5/2020, 2:38:48 PM ~ OFP-Bot: Command "$addreact 696368099586474004 🌐 <@&696367449876201534>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+4/18/2020, 1:06:27 AM ~ OFP-Bot: Command "$addreact 700874435883827210 🐝" called by 'PhoenixGamma#5351' in channel 'roles' : FAILED
+4/18/2020, 1:07:47 AM ~ OFP-Bot: Command "$addreact 700874435883827210 🐝 <@&700375001055887460>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+4/28/2020, 12:02:41 AM ~ OFP-Bot: Command "$addreact 703956741297012796 🏰  <@&704482266184941588>" called by 'geoOtter#9508' in channel 'roles' : SUCCEEDED
+4/28/2020, 12:04:16 AM ~ OFP-Bot: Command "$addreact 704482950133186621 🏰  <@&704482266184941588>" called by 'geoOtter#9508' in channel 'roles' : SUCCEEDED
+4/28/2020, 4:28:16 PM ~ OFP-Bot: Command "$addreact 704730648400887970 👨‍🌾 <@&704730436668096532>" called by 'PhoenixGamma#5351' in channel 'roles' : SUCCEEDED
+5/29/2020, 7:53:35 AM ~ OFP-Bot: Command "$addreact 704482950133186621 🏰  704482266184941588" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+5/29/2020, 7:54:41 AM ~ OFP-Bot: Command "$addreact 704730648400887970 👨‍🌾 704730436668096532" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
+6/24/2020, 22:45:55 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'use-this-channel' : SUCCEEDED
