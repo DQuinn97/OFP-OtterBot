@@ -1,22 +1,3 @@
-const http = require("http");
-const https = require("https");
-const express = require("express");
-const app = express();
-app.use(express.static("public"));
-app.get("/", (request, response) => {
-    console.log(Date.now() + " Ping Received");
-    response.sendStatus(200);
-});
-
-app.listen(process.env.PORT);
-/*
-setInterval(() => {
-  http.get(`http://ofp-otterbot.glitch.me/`);
-  https.get(`https://ofp-otterbot.glitch.me/`);
-}, 140000);
-*/
-
-const getJSON = require("get-json");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const twitchAPI = require("twitch").default;
@@ -30,7 +11,6 @@ let live_interval;
 client.setMaxListeners(0);
 
 client.on("ready", () => {
-    console.log("listening on " + process.env.PORT);
     require(`./protocols/init.js`).demand(client);
     live_interval = setInterval(function () {
         require(`./protocols/OFP_live.js`).demand(client, twitch);
@@ -48,8 +28,22 @@ client.on("messageReactionAdd", (reaction, user) => {
 client.on("messageReactionRemove", (reaction, user) => {
     require(`./protocols/reactionHandler.js`).demand(reaction, user, true);
 });
+
 client.on("guildMemberAdd", member => {
     member.roles.add("522784830484905995");
+});
+client.on("guildMemberRemove", (member)=>{
+    require(`./protocols/voiceChannelHandler.js`).remove(member);
+});
+
+client.on("channelDelete", (channel) => {
+    require(`./protocols/voiceChannelHandler.js`).check(channel);
+});
+client.on("channelUpdate", (oldChannel, newChannel) => {
+    require(`./protocols/voiceChannelHandler.js`).update(oldChannel, newChannel);
+});
+client.on("voiceStateUpdate", (oldState, newState) => {
+    require(`./protocols/voiceChannelHandler.js`).demand(oldState, newState);
 });
 
 //BOTTOM CODE!

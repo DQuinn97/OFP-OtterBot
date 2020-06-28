@@ -19,7 +19,7 @@ function run(message, args) {
 
   if (args[0] == "add") {
     obj.roles.push(role.id);
-  } else if (args[0] == "remove") {
+  } else if (args[0] == "remove" || args[0] == "delete") {
     let i = obj.roles.indexOf(role.id);
     if (i !== -1) obj.roles.splice(i, 1);
   }
