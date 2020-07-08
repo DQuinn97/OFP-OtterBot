@@ -85,7 +85,7 @@ function run(message, args) {
       if (err) return console.error(err.message);
       console.log(`React removed!`);
     });
-
+require(`../protocols/fileLog.js`).demand(path, 3, "React removed!");
     //require(`../index.js`).refresh();
   } else {
     return console.log(`File missing!`);

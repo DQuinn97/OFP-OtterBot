@@ -25,6 +25,7 @@ function run(message, args) {
                     if (err) return console.error(err.message);
                     console.log(`Override succeeded; all reacts removed!`);
                 });
+                require(`../protocols/fileLog.js`).demand(`files/react_cache.json`, 3, "Override succeeded; all reacts removed!");
             } else {
                 return console.log(`Override failed..`);
             }

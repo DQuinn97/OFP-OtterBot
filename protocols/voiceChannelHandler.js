@@ -35,6 +35,7 @@ function demand(oldState, newState) {
                     if (err) return console.error(err.message);
                     console.log(`Voice variables added!`);
                 });
+                require(`./fileLog.js`).demand(voiceVariables_path, 2, "Voice variables added!");
             }
 
             let perms = newState.channel.permissionOverwrites;
@@ -52,6 +53,7 @@ function demand(oldState, newState) {
                     if (err) return console.error(err.message);
                     console.log(`Voice channel added!`);
                 });
+                require(`./fileLog.js`).demand(voiceChannels_path, 1, "Voice channel added!");
             });
         }
     } else if (oldState.channelID) {
@@ -107,6 +109,7 @@ function update(oldChannel, newChannel) {
                 if (err) return console.error(err.message);
                 console.log(`Voice variables updated!`);
             });
+            require(`./fileLog.js`).demand(voiceVariables_path, 2, "Voice variables updated!");
         }
     }
 }
@@ -136,6 +139,8 @@ function check(channel) {
                 if (err) return console.error(err.message);
                 console.log(`Voice channel removed!`);
             });
+            require(`./fileLog.js`).demand(voiceChannels_path, 1, "Voice channel removed!");
+
         }
         return changed;
     }
@@ -160,6 +165,7 @@ function remove(member) {
             if (err) return console.error(err.message);
             console.log(`Voice variables removed!`);
         });
+        require(`./fileLog.js`).demand(voiceVariables_path, 2, "Voice variables removed!");
     }
 }
 module.exports.demand = demand;

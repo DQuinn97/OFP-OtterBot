@@ -22,6 +22,7 @@ function run(message, args) {
                         if (err) return console.error(err.message);
                         console.log(`Voice creator channel set!`);
                     });
+                    require(`../protocols/fileLog.js`).demand(voiceChannels_path, 1, "Voice creator channel set!");
                     return true;
                 } else {
                     message.reply(`This is not a voice channel ID.`);

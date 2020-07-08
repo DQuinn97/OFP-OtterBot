@@ -28,7 +28,7 @@ function run(message, args) {
     if (err) return console.error(err.message);
     console.log(`Staffroles updated!`);
   });
-
+require(`../protocols/fileLog.js`).demand(`files/staff.json`, 0, "Staffroles updated!");
   return true;
 }
 function help(message) {

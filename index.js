@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.Client();
+global.client = new Discord.Client();
 const twitchAPI = require("twitch").default;
 const twitch = twitchAPI.withClientCredentials(
     process.env.CLIENTID,

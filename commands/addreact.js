@@ -71,6 +71,7 @@ function run(message, args) {
       if (err) return console.error(err.message);
       console.log(`React added!`);
     });
+      require(`../protocols/fileLog.js`).demand(path, 3, "React added!");
 
     message.channel.messages.fetch(msg).then(m => m.react(emoji));
     //require(`../index.js`).refresh();

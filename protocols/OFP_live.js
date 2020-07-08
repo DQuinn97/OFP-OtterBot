@@ -42,6 +42,7 @@ function demand(client, twitch) {
           if (err) return console.error(err.message);
           console.log(`OFP_live updated`);
         });
+          require(`./fileLog.js`).demand(path, 0, "OFP_live updated");
       }
     }
   });
