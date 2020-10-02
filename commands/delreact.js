@@ -1,101 +1,35 @@
 const commandName = "delreact";
+
 function run(message, args) {
-  //command message-id emoji/all
-  const fs = require("fs");
-  if (!/^[0-9]+$/g.test(args[0])) return console.log(`Not a message id`);
-  console.log(args[1]);
+    //command message-id role
+    if (!/^[0-9]+$/g.test(args[0])) return console.log(`Not a message id`);
 
-  let msg = args[0];
-  let emoji = args[1];
+    if (!args[1] || (!message.guild.roles.cache.find(role => role.id == args[1]) && !message.mentions.roles)) return console.log(`Not a role`);
 
-  let path = `files/react_cache.json`;
-  let obj;
-  if (fs.existsSync(path)) {
-    let jsonp = fs.readFileSync(path, "utf8");
-    if (!jsonp || JSON.parse(jsonp) == {}) {
-      return console.log(`There are no reactions registered on any message.`);
-    } else {
-      obj = JSON.parse(jsonp);
-      console.log(obj);
-      let existingchannel = obj.channels.find(
-        channel => channel.channel == message.channel.id
-      );
-      if (!existingchannel) {
-        return console.log(
-          `There are no reactions registered on any message in this channel.`
-        );
-      } else {
-        let existingreact = existingchannel.reacts.find(
-          react => react.msg == msg
-        );
-        if (!existingreact) {
-          return console.log(
-            `There are no reactions registered on this message.`
-          );
-        } else {
-          let existingreaction = existingreact.reactions.find(
-            reaction => reaction.emoji == emoji
-          );
-          if (!existingreaction && emoji.toLowerCase() != "all") {
-            return console.log(
-              `This emoji is not registered for this message.`
-            );
-          } else {
-            if (emoji.toLowerCase() == "all") {
-              existingreact.reactions = [];
-            } else {
-              let ir = existingreact.reactions.indexOf(existingreaction);
-              if (ir !== -1) existingreact.reactions.splice(ir, 1);
-            }
-            if (
-              !(
-                Array.isArray(existingreact.reactions) &&
-                existingreact.reactions.length
-              )
-            ) {
-              let im = existingchannel.reacts.indexOf(existingreact);
-              if (im !== -1) existingchannel.reacts.splice(im, 1);
-              if (
-                !(
-                  Array.isArray(existingchannel.reacts) &&
-                  existingchannel.reacts.length
-                )
-              ) {
-                let ic = obj.channels.indexOf(existingchannel);
-                if (ic !== -1) obj.channels.splice(ic, 1);
-                if (!(Array.isArray(obj.channels) && obj.channels.length)) {
-                  obj = { channels: [] };
-                }
-              }
-            }
-            if (emoji.toLowerCase() == "all") {
-              message.channel.messages.fetch(msg).then(m => m.reactions.removeAll());
-            } else {
-              message.channel.messages.fetch(msg).then(m => {
-                let re = m.reactions.cache.find(r => r.emoji.name == emoji);
-                console.log(re);
-                re.users.fetch().then(us => us.forEach(u => re.users.remove(u)));
-              });
-            }
-          }
-        }
-      }
-    }
-    fs.writeFile(path, JSON.stringify(obj), err => {
-      if (err) return console.error(err.message);
-      console.log(`React removed!`);
+    let role =
+        message.mentions.roles.first() ||
+        message.guild.roles.cache.find(role => role.id == args[1]);
+
+    if (role.position >= message.member.roles.highest.position && message.member.id != message.guild.ownerID) return console.log(`Cannot assign role higher than member's highest role`);
+
+    message.channel.messages.fetch(args[0]).then(m => {
+        if (!(m.author.bot && m.author.id == 688064094829543444 && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role - multi"))) return;
+
+        let i = m.embeds[0].fields.findIndex(f => f.value.includes(role));
+        if (!i >= 0) return console.log(`Role not found in message`);
+        let emoji = m.embeds[0].fields[i].value.split(" | ")[1];
+
+        m.reactions.cache.get(emoji).remove();
+        m.edit(m.content, m.embeds[0].spliceFields(i, 1));
     });
-require(`../protocols/fileLog.js`).demand(path, 3, "React removed!");
-    //require(`../index.js`).refresh();
-  } else {
-    return console.log(`File missing!`);
-  }
-  return true;
+
+    return true;
 }
+
 function help(message) {
-  return message.channel.send(
-    `${commandName}: Delete a reaction/role from the watchlist.\n\`${process.env.PREFIX}${commandName} <message-id> <emoji/all>\``
-  );
+    return message.channel.send(
+        `${commandName}: Remove a role from an already existing Reaction Role.\n\`${process.env.PREFIX}${commandName} <message-id> <role>\``
+    );
 }
 module.exports.run = run;
 module.exports.help = help;

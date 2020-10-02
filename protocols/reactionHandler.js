@@ -1,23 +1,46 @@
-function demand(reaction, user, remove = false) {
-  const fs = require("fs");
-  let found = JSON.parse(
-    fs.readFileSync(`files/react_cache.json`, "utf8")
-  ).channels.find(c => c.channel == reaction.message.channel.id);
-  if (found) {
-    found = found.reacts.find(r => r.msg == reaction.message.id);
-    if (found) {
-      found = found.reactions.find(r => r.emoji == reaction.emoji.name);
-      if (found) {
-        if(remove){
-          return reaction.message.guild.members.cache.get(user.id).roles.remove(found.role);
-        } else {
-          return reaction.message.guild.members.cache.get(user.id).roles.add(found.role);
+let handler = (m, r, u, x) => {
+    if (!(m.author.bot && m.author.id == 688064094829543444 && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
+    let role;
+    let fields = m.embeds[0].fields;
+    if (m.embeds[0].title.includes("multi")) {
+        let result = fields.find(f => f.value.includes(r.emoji));
+        if (result) {
+            role = result.value.split(" | ")[0];
         }
-      }
+    } else if (m.embeds[0].title.includes("single")) {
+        role = m.embeds[0].fields[0].value.split(" | ")[0];
     }
-  }
-  return console.log(
-    `Reaction not found or deleted! @messageReaction${!remove ? "Add" : "Remove"}`
-  );
+    if (role) {
+        role = m.guild.roles.cache.find(r => `<@&${r.id}>` == role);
+        if (x) {
+            return m.guild.members.cache.get(u.id).roles.remove(role);
+        } else {
+            return m.guild.members.cache.get(u.id).roles.add(role);
+        }
+    } else {
+        return console.log("Role not found from message");
+    }
+}
+
+function demand(reaction, user, remove = false) {
+    if (reaction.partial) {
+        return reaction.fetch().then(r => {
+            if (r.message.partial) {
+                return r.message.fetch().then(m => {
+                    return handler(m, r, user, remove);
+                })
+            } else {
+                return handler(r.message, r, user, remove);
+            }
+        })
+    } else {
+        if (reaction.message.partial) {
+            return reaction.message.fetch().then(m => {
+                return handler(m, reaction, user, remove);
+            })
+        } else {
+            return handler(reaction.message, reaction, user, remove);
+        }
+    }
 }
 module.exports.demand = demand;

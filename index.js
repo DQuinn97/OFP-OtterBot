@@ -1,5 +1,7 @@
 const Discord = require("discord.js");
-global.client = new Discord.Client();
+global.client = new Discord.Client({
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+});
 const twitchAPI = require("twitch").default;
 const twitch = twitchAPI.withClientCredentials(
     process.env.CLIENTID,
@@ -31,16 +33,6 @@ client.on("messageReactionRemove", (reaction, user) => {
 
 client.on("guildMemberAdd", member => {
     member.roles.add("522784830484905995");
-});
-client.on("guildMemberRemove", (member)=>{
-    require(`./protocols/voiceChannelHandler.js`).remove(member);
-});
-
-client.on("channelDelete", (channel) => {
-    require(`./protocols/voiceChannelHandler.js`).check(channel);
-});
-client.on("channelUpdate", (oldChannel, newChannel) => {
-    require(`./protocols/voiceChannelHandler.js`).update(oldChannel, newChannel);
 });
 client.on("voiceStateUpdate", (oldState, newState) => {
     require(`./protocols/voiceChannelHandler.js`).demand(oldState, newState);
