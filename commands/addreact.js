@@ -1,6 +1,7 @@
 const commandName = "addreact";
 
 function run(message, args) {
+    let botID = "629045876693663755";
     //command message-id role emoji
     if (!/^[0-9]+$/g.test(args[0])) return console.log(`Not a message id`);
 
@@ -16,7 +17,7 @@ function run(message, args) {
     if (!emoji) return console.log(`No emoji given`);
 
     message.channel.messages.fetch(args[0]).then(m => {
-        if (!(m.author.bot && m.author.id == 688064094829543444 && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role - multi"))) return;
+        if (!(m.author.bot && m.author.id == botID && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role - multi"))) return;
         m.edit(m.content, m.embeds[0].addField(`---------------------------`, `${role} | ${emoji}`));
         m.react(emoji);
     });

@@ -1,6 +1,7 @@
 const commandName = "delreact";
 
 function run(message, args) {
+    let botID = "629045876693663755";
     //command message-id role
     if (!/^[0-9]+$/g.test(args[0])) return console.log(`Not a message id`);
 
@@ -13,7 +14,7 @@ function run(message, args) {
     if (role.position >= message.member.roles.highest.position && message.member.id != message.guild.ownerID) return console.log(`Cannot assign role higher than member's highest role`);
 
     message.channel.messages.fetch(args[0]).then(m => {
-        if (!(m.author.bot && m.author.id == 688064094829543444 && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role - multi"))) return;
+        if (!(m.author.bot && m.author.id == botID && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role - multi"))) return;
 
         let i = m.embeds[0].fields.findIndex(f => f.value.includes(role));
         if (!i >= 0) return console.log(`Role not found in message`);

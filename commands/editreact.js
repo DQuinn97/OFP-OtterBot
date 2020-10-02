@@ -1,7 +1,9 @@
 const commandName = "editreact";
 
 function run(message, args) {
+    let botID = "629045876693663755";
     //command message-id description
+
     let id = args.shift();
     if (!/^[0-9]+$/g.test(id)) return console.log(`Not a message id`);
 
