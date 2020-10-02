@@ -8,7 +8,7 @@ function run(message, args) {
     if (!/^[0-9]+$/g.test(id)) return console.log(`Not a message id`);
 
     message.channel.messages.fetch(id).then(m => {
-        if (!(m.author.bot && m.author.id == 688064094829543444 && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
+        if (!(m.author.bot && m.author.id == botID && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
 
         m.edit(m.content, m.embeds[0].setDescription(args.join(" ")));
     });
