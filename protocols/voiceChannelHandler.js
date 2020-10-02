@@ -1,6 +1,6 @@
 function demand(oldState, newState) {
     let starterChannels = ["755132799027118170", "726840461536264233"];
-    let botID = "688064094829543444";
+    let botID = "629045876693663755";
     let botPerms = 256;
     if (newState.channelID && starterChannels.includes(newState.channelID)) {
         console.log("checked")
