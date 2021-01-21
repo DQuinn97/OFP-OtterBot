@@ -1,50 +1,73 @@
 function demand(client, twitch) {
-  const fs = require("fs");
-  let path = `files/OFP_live.json`;
-  let channel = "OtterFoxProductions";
-  let url = `https://www.twitch.tv/${channel}`;
-  let storedObj;
-  let streamObj;
-  let Promise = twitch.helix.streams.getStreamByUserName(channel);
-  Promise.then((stream, err) => {
-    if (err) return console.error(err);
-    if (fs.existsSync(path)) {
-      let jsonp = fs.readFileSync(path, "utf8");
-      if (!jsonp || jsonp == null || jsonp == "{}") {
-        storedObj = {
-          type: null
-        };
-      } else {
-        storedObj = JSON.parse(jsonp);
-      }
+    const fs = require("fs");
+    let path = `files/OFP_live.json`;
+    let channel = "801447542796713995";
+    let message = "801829041900224522";
+    let ttv_channel = "OtterFoxProductions";
+    let url = `https://www.twitch.tv/${ttv_channel}`;
 
-      if (!stream || stream == null || stream == {}) {
-        streamObj = {
-          type: null
-        };
-      } else {
-        streamObj = {
-          type: "live"
-        };
-      }
+    twitch.helix.streams.getStreamByUserName(ttv_channel).then((stream, err) => {
+        if (err) return console.error(err);
+        console.log(stream);
+        client.channels.cache.get(channel).messages.fetch(message).then(msg => {
+            let msg_timestamp = msg.editedTimestamp;
+            let now_timestamp = Date.now();
+            let diff = now_timestamp - msg_timestamp;
 
-      if (streamObj.type != storedObj.type) {
-        if (streamObj.type == "live") {
-          client.channels.cache
-            .get("511568893530079282")
-            .send(
-              `The crew is jumping on the couch! Come see what they are up to!! ${url}`
-            );
-        }
-        storedObj.type = streamObj.type;
+            let msg_state = "";
+            if (msg.content.includes("OFFLINE")) {
+                msg_state = "OFFLINE";
+            } else if (msg.content.includes("LIVE")) {
+                msg_state = "LIVE";
+            }
 
-        fs.writeFile(path, JSON.stringify(storedObj), err => {
-          if (err) return console.error(err.message);
-          console.log(`OFP_live updated`);
+            if (stream != null && ((diff >= 60000 && msg_state == "OFFLINE") || (diff >= 600000 && msg_state == "LIVE"))) {
+
+                stream.getGame().then(gameinfo => {
+                    let streaminfo = {
+                        game: stream._data.game_name,
+                        title: stream._data.title,
+                        livesince: stream._data.started_at,
+                        boxart: gameinfo._data.box_art_url.replace("{width}", "60").replace("{height}", "80")
+                    }
+
+                    console.log(gameinfo);
+                    console.log(streaminfo);
+                    let embed = {
+                        "title": `The crew is jumping on the couch! Come see what they are up to!!`,
+                        "description": `${url}`,
+                        "color": 47669,
+                        "fields": [{
+                            "name": `Live with:`,
+                            "value": `${streaminfo.title ? streaminfo.title : "unknown"}`
+                            }, {
+                            "name": `Playing:`,
+                            "value": `${streaminfo.game ? streaminfo.game : "unknown"}`
+                            }],
+                        "image": {
+                            url: `${streaminfo.boxart}`
+                        }
+                    }
+
+                    msg.edit(`${ttv_channel} is currently **LIVE**`, {
+                        "embed": embed
+                    });
+                });
+
+
+                if (msg_state == "OFFLINE") {
+                    msg.channel.send("Ding dong!").then(ping => {
+                        setTimeout(function () {
+                            ping.delete()
+                        }, 60000);
+                    });
+                }
+            } else if (stream == null && diff >= 600000 && msg_state == "LIVE") {
+                msg.edit(`${ttv_channel} is currently **OFFLINE**`, {
+                    "embed": null
+                });
+            }
         });
-          require(`./fileLog.js`).demand(path, 0, "OFP_live updated");
-      }
-    }
-  });
+    });
 }
 module.exports.demand = demand;
