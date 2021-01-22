@@ -16,7 +16,7 @@ client.on("ready", () => {
     require(`./protocols/init.js`).demand(client);
     live_interval = setInterval(function () {
         require(`./protocols/OFP_live.js`).demand(client, twitch);
-    }, 5000);
+    }, 60000);
 });
 
 client.on("message", message => {

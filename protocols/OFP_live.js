@@ -8,7 +8,6 @@ function demand(client, twitch) {
 
     twitch.helix.streams.getStreamByUserName(ttv_channel).then((stream, err) => {
         if (err) return console.error(err);
-        console.log(stream);
         client.channels.cache.get(channel).messages.fetch(message).then(msg => {
             let msg_timestamp = msg.editedTimestamp;
             let now_timestamp = Date.now();
