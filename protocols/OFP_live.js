@@ -14,9 +14,9 @@ function demand(client, twitch) {
             let diff = now_timestamp - msg_timestamp;
 
             let msg_state = "";
-            if (msg.content.includes("OFFLINE")) {
+            if (msg.content.toUpperCase().includes("OFFLINE")) {
                 msg_state = "OFFLINE";
-            } else if (msg.content.includes("LIVE")) {
+            } else if (msg.content.toUpperCase().includes("LIVE")) {
                 msg_state = "LIVE";
             }
 
