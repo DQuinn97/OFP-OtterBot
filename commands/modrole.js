@@ -20,6 +20,10 @@ const options = [{
         required: true,
         type: 8
 }]
+}, {
+    name: "list",
+    description: "List all modded/authorized roles.",
+    type: 1
 }];
 
 function run(interaction, options) {
@@ -32,11 +36,24 @@ function run(interaction, options) {
     } else if (options.getSubcommand() === "remove") {
         let i = obj.roles.indexOf(role.id);
         if (i !== -1) obj.roles.splice(i, 1);
+    } else if (options.getSubcommand() === "list") {
+        let list = [];
+        for (let r of obj.roles) {
+            list.push(interaction.guild.roles.fetch(r).name);
+        }
+        return interaction.reply({
+            content: list.join(', '),
+            ephemeral: true
+        });
     }
-
+    require(`./protocols/commandHandler.js`).createCommands();
     fs.writeFile(`files/staff.json`, JSON.stringify(obj), err => {
         if (err) return console.error(err.message);
     });
+    interaction.reply({
+        content: "Command executed!",
+        ephemeral: true
+    })
 }
 
 function help(interaction) {
