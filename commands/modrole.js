@@ -46,7 +46,7 @@ function run(interaction, options) {
             ephemeral: true
         });
     }
-    require(`./protocols/commandHandler.js`).createCommands();
+    require(`../protocols/commandHandler.js`).createCommands();
     fs.writeFile(`files/staff.json`, JSON.stringify(obj), err => {
         if (err) return console.error(err.message);
     });
