@@ -1,6 +1,6 @@
 {
     "name": "OtterBot",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "Official bot for the OtterFoxProductions members and community!",
     "main": "index.js",
     "scripts": {
