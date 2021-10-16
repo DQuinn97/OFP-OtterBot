@@ -3,7 +3,6 @@ function demand(oldState, newState) {
     let botID = client.user.id;
     let botPerms = 256;
     if (newState.channelId && starterChannels.includes(newState.channelId)) {
-        console.log("checked")
         let options = {
             name: `${newState.member.displayName}'s channel`,
             permissionOverwrites: newState.channel.permissionOverwrites.cache,
@@ -19,11 +18,8 @@ function demand(oldState, newState) {
             newState.setChannel(channel);
         });
     }
-    if (oldState.channelID) {
-        console.log("has oldState");
-        console.log(oldState.channel.permissionOverwrites.cache)
+    if (oldState.channelId) {
         if (oldState.channel.permissionOverwrites.cache.has(botID) && oldState.channel.permissionOverwrites.cache.get(botID).allow.bitfield == botPerms) {
-            console.log('bitfield checked')
             if (oldState.channel.members.size <= 0) oldState.channel.delete();
         }
     }
