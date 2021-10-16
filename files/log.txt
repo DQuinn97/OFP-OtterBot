@@ -84,3 +84,4 @@
 5/29/2020, 7:53:35 AM ~ OFP-Bot: Command "$addreact 704482950133186621 🏰  704482266184941588" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
 5/29/2020, 7:54:41 AM ~ OFP-Bot: Command "$addreact 704730648400887970 👨‍🌾 704730436668096532" called by 'Quinn#5186' in channel 'roles' : SUCCEEDED
 6/24/2020, 22:45:55 ~ OFP-Bot: Command "$help" called by 'Quinn#5186' in channel 'use-this-channel' : SUCCEEDED
+16/10/2021, 14:40:04 ~ OFP-Bot: Command "+help" called by 'Quinn#5186' in channel 'new-test' : SUCCEEDED

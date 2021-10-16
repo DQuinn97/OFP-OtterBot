@@ -1,6 +1,5 @@
 let handler = (m, r, u, x) => {
-    let botID = "629045876693663755";
-    if (!(m.author.bot && m.author.id == botID && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
+    if (!(m.author.bot && m.author.id == client.user.id && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
     let role;
     let fields = m.embeds[0].fields;
     if (m.embeds[0].title.includes("multi")) {

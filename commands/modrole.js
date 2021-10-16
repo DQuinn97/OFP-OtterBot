@@ -1,41 +1,64 @@
 const commandName = "modrole";
-function run(message, args) {
-  //command add/remove role
-  const fs = require("fs");
+const description = "Add/remove a role to the list of modded/authorized roles.";
+const options = [{
+    name: "add",
+    description: "Add a role to the list of modded/authorized roles.",
+    type: 1,
+    options: [{
+        name: "role",
+        description: "A role mentionable.",
+        required: true,
+        type: 8
+}]
+}, {
+    name: "remove",
+    description: "Remove a role to the list of modded/authorized roles.",
+    type: 1,
+    options: [{
+        name: "role",
+        description: "A role mentionable.",
+        required: true,
+        type: 8
+}]
+}];
 
-  if (args[0] != "add" && args[0] != "remove")
-    return console.log(`Not an action!`);
-  if (
-    !args[1] ||
-    (!message.guild.roles.find(role => role.id == args[1]) &&
-      !message.mentions.roles)
-  )
-    return console.log(`Not a role!`);
-  let role =
-    message.mentions.roles.first() ||
-    message.guild.roles.find(role => role.id == args[1]);
+function run(interaction, options) {
+    const fs = require("fs");
+    let obj = JSON.parse(fs.readFileSync(`files/staff.json`, "utf8"));
+    let role = options.getRole("role");
 
-  let obj = JSON.parse(fs.readFileSync(`files/staff.json`, "utf8"));
+    if (options.getSubcommand() === "add") {
+        obj.roles.push(role.id);
+    } else if (options.getSubcommand() === "remove") {
+        let i = obj.roles.indexOf(role.id);
+        if (i !== -1) obj.roles.splice(i, 1);
+    }
 
-  if (args[0] == "add") {
-    obj.roles.push(role.id);
-  } else if (args[0] == "remove" || args[0] == "delete") {
-    let i = obj.roles.indexOf(role.id);
-    if (i !== -1) obj.roles.splice(i, 1);
-  }
-
-  fs.writeFile(`files/staff.json`, JSON.stringify(obj), err => {
-    if (err) return console.error(err.message);
-    console.log(`Staffroles updated!`);
-  });
-require(`../protocols/fileLog.js`).demand(`files/staff.json`, 0, "Staffroles updated!");
-  return true;
+    fs.writeFile(`files/staff.json`, JSON.stringify(obj), err => {
+        if (err) return console.error(err.message);
+    });
 }
-function help(message) {
-  return message.channel.send(
-    `${commandName}: Add/remove a role to the list of modded/authorized roles.\n\`${process.env.PREFIX}${commandName} <add/remove> <role>\``
-  );
+
+function help(interaction) {
+    return interaction.reply({
+        "embeds": [{
+            "title": `${commandName}`,
+            "description": `${description}`,
+            "fields": [{
+                "name": "add/remove",
+                "value": "Whether to add or remove a given role."
+                }, {
+                "name": "role",
+                "value": "Which role to add or remove."
+                }]
+        }],
+        ephemeral: true
+    });
 }
 module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 2;
+
+module.exports.name = commandName;
+module.exports.description = description;
+module.exports.options = options;

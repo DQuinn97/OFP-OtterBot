@@ -1,6 +1,7 @@
-const Discord = require("discord.js");
+global.Discord = require("discord.js");
 global.client = new Discord.Client({
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_PRESENCES]
 });
 const twitchAPI = require("twitch").default;
 const twitch = twitchAPI.withClientCredentials(
@@ -17,11 +18,22 @@ client.on("ready", () => {
     live_interval = setInterval(function () {
         require(`./protocols/OFP_live.js`).demand(client, twitch);
     }, 60000);
+
+    require(`./protocols/commandHandler.js`).createCommands();
 });
 
-client.on("message", message => {
+client.on("interactionCreate", async (interaction) => {
+    if (!interaction.isCommand()) return;
+    const {
+        commandName,
+        options
+    } = interaction;
+    require(`./commands/${commandName}.js`).run(interaction, options);
+});
+
+client.on("messageCreate", (message) => {
     if (message.author.bot) return;
-    require(`./protocols/commandTest.js`).demand(message);
+    //require(`./protocols/commandTest.js`).demand(message);
 });
 
 client.on("messageReactionAdd", (reaction, user) => {

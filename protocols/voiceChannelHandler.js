@@ -1,10 +1,10 @@
 function demand(oldState, newState) {
     let starterChannels = ["755132799027118170", "726840461536264233"];
-    let botID = "629045876693663755";
+    let botID = client.user.id;
     let botPerms = 256;
-    if (newState.channelID && starterChannels.includes(newState.channelID)) {
+    if (newState.channelId && starterChannels.includes(newState.channelId)) {
         console.log("checked")
-        let perms = newState.channel.permissionOverwrites.clone();
+        let perms = newState.channel.permissionOverwrites.cache.clone();
         perms.set(newState.member.id, {
             id: newState.member.id,
             allow: 16
@@ -23,7 +23,7 @@ function demand(oldState, newState) {
         });
     }
     if (oldState.channelID) {
-        if (oldState.channel.permissionOverwrites.has(botID) && oldState.channel.permissionOverwrites.get(botID).allow.bitfield == botPerms) {
+        if (oldState.channel.permissionOverwrites.cache.has(botID) && oldState.channel.permissionOverwrites.cache.get(botID).allow.bitfield == botPerms) {
             if (oldState.channel.members.size <= 0) oldState.channel.delete();
         }
     }

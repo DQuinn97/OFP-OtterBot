@@ -4,11 +4,11 @@ function demand(client) {
     console.log("Connected!");
     client.user.setPresence({
         status: "online",
-        activity: {
+        activities: [{
             name: "OtterFoxProductions",
             type: "STREAMING",
             url: "https://www.twitch.tv/otterfoxproductions"
-        }
+        }]
     });
     console.log("Status updated!");
 }
