@@ -42,7 +42,7 @@ function run(interaction, options) {
             list.push(interaction.guild.roles.fetch(r).name);
         }
         return interaction.reply({
-            content: list.join(', '),
+            content: list.join(', ') || "none",
             ephemeral: true
         });
     }
