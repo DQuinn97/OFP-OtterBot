@@ -4,19 +4,18 @@ function demand(oldState, newState) {
     let botPerms = 256;
     if (newState.channelId && starterChannels.includes(newState.channelId)) {
         console.log("checked")
-        let perms = newState.channel.permissionOverwrites.cache.clone();
-        perms.create(newState.member.id, {
-            'MANAGE_CHANNELS': true
-        })
-        perms.create(botID, {
-            'PRIORITY_SPEAKER': true
-        });
         let options = {
             name: `${newState.member.displayName}'s channel`,
-            permissionOverwrites: perms,
+            permissionOverwrites: newState.channel.permissionOverwrites.cache,
             position: 99
         }
         newState.channel.clone(options).then(channel => {
+            channel.permissionOverwrites.create(newState.member.id, {
+                'MANAGE_CHANNELS': true
+            });
+            channel.permissionOverwrites.create(botID, {
+                'PRIORITY_SPEAKER': true
+            });
             newState.setChannel(channel);
         });
     }
