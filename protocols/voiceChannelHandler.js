@@ -20,7 +20,10 @@ function demand(oldState, newState) {
         });
     }
     if (oldState.channelID) {
+        console.log("has oldState");
+        console.log(oldState.channel.permissionOverwrites.cache)
         if (oldState.channel.permissionOverwrites.cache.has(botID) && oldState.channel.permissionOverwrites.cache.get(botID).allow.bitfield == botPerms) {
+            console.log('bitfield checked')
             if (oldState.channel.members.size <= 0) oldState.channel.delete();
         }
     }
