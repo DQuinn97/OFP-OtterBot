@@ -55,7 +55,9 @@ function demand(client, twitch) {
 
 
                 if (msg_state == "OFFLINE") {
-                    msg.channel.send("Ding dong!").then(ping => {
+                    msg.channel.send({
+                        content: "Ding dong!"
+                    }).then(ping => {
                         setTimeout(function () {
                             ping.delete()
                         }, 60000);
