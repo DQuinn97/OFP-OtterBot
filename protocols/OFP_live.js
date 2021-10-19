@@ -49,7 +49,7 @@ function demand(client, twitch) {
                     }
 
                     msg.edit(`${ttv_channel} is currently **LIVE**`, {
-                        "embed": embed
+                        "embeds": [embed]
                     });
                 });
 
