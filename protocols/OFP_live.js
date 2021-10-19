@@ -65,8 +65,9 @@ function demand(client, twitch) {
                     });
                 }
             } else if (stream == null && diff >= 600000 && msg_state == "LIVE") {
-                msg.edit(`${ttv_channel} is currently **OFFLINE**`, {
-                    "embed": null
+                msg.edit({
+                    content: `${ttv_channel} is currently **OFFLINE**`,
+                    "embeds": []
                 });
             }
         });
