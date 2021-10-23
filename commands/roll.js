@@ -128,7 +128,7 @@ function run(interaction, options) {
             break;
     }
     for (let i = 0; i < rolls.qty; i++) {
-        rolls.values.push(Math.random() * rolls.die + 1 + '');
+        rolls.values.push(Math.round(Math.random() * rolls.die + 1) + '');
     }
     if (rolls.die == 10 && rolls.qty == 2) rolls.values[0] += '0';
     if (rolls.die == 2) {
@@ -141,7 +141,7 @@ function run(interaction, options) {
 
     let embeds = [{
         "title": `You rolled ${rolls.qty}D${rolls.die}:`,
-        "description": `Values: ${rolls.values.join(' + ')}`
+        "description": `Value${$rolls.values.length > 1? 's' : ''}: ${rolls.values.join(' + ')}`
         }]
 
     interaction.reply({
