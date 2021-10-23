@@ -130,7 +130,12 @@ function run(interaction, options) {
     for (let i = 0; i < rolls.qty; i++) {
         rolls.values.push(Math.ceil(Math.random() * rolls.die) + '');
     }
-    if (rolls.die == 10 && rolls.qty == 2) rolls.values[0] += '0';
+    if (rolls.die == 10) {
+        for (let v in rolls.values) {
+            if (rolls.values[v] == '10') rolls.values[v] == '0';
+        }
+        if (rolls.qty == 2) rolls.values[0] += '0';
+    }
     if (rolls.die == 2) {
         for (let v in rolls.values) {
             rolls.values[v] = rolls.values[v] == 1 ? "heads" : "tails";
