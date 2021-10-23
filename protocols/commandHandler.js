@@ -1,7 +1,7 @@
 function createCommands() {
     const fs = require("fs");
 
-    const guildId = '446642110519574559';
+    const guildId //= '446642110519574559';
     const guild = client.guilds.cache.get(guildId);
     let commands;
 
