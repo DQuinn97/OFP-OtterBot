@@ -132,7 +132,7 @@ function run(interaction, options) {
     }
     if (rolls.die == 10) {
         for (let v in rolls.values) {
-            if (rolls.values[v] == '10') rolls.values[v] == '0';
+            if (rolls.values[v] == '10') rolls.values[v] = '0';
         }
         if (rolls.qty == 2) rolls.values[0] += '0';
     }
