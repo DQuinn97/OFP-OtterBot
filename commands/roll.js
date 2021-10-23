@@ -128,7 +128,7 @@ function run(interaction, options) {
             break;
     }
     for (let i = 0; i < rolls.qty; i++) {
-        rolls.values.push(Math.round(Math.random() * rolls.die + 1) + '');
+        rolls.values.push(Math.ceil(Math.random() * rolls.die) + '');
     }
     if (rolls.die == 10 && rolls.qty == 2) rolls.values[0] += '0';
     if (rolls.die == 2) {
