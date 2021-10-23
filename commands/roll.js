@@ -141,7 +141,7 @@ function run(interaction, options) {
 
     let embeds = [{
         "title": `You rolled ${rolls.qty}D${rolls.die}:`,
-        "description": `Value${$rolls.values.length > 1? 's' : ''}: ${rolls.values.join(' + ')}`
+        "description": `Value${rolls.values.length > 1? 's' : ''}: ${rolls.values.join(' + ')}`
         }]
 
     interaction.reply({
