@@ -1,11 +1,6 @@
 const commandName = "fix";
 const description = "Fixes stuff.";
-const options = [{
-    name: "message",
-    description: "Message ID.",
-    required: true,
-    type: 4
-}];
+const options = [];
 
 function run(interaction, options) {
     const fs = require("fs");
