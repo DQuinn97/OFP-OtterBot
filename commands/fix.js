@@ -4,7 +4,7 @@ const options = [{
     name: "message",
     description: "Message ID.",
     required: true,
-    type: 4
+    type: 3
 }];
 
 function run(interaction, options) {
