@@ -20,6 +20,8 @@ function run(interaction, options) {
     twitch.helix.streams.getStreamByUserName(ttv_channel).then((stream, err) => {
         if (err) return console.error(err);
         client.channels.cache.get(channel).messages.fetch(message).then(msg => {
+            console.log(msg)
+
             let msg_timestamp = msg.editedTimestamp;
             let now_timestamp = Date.now();
             let diff = now_timestamp - msg_timestamp;
