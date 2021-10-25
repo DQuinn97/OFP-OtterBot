@@ -4,7 +4,7 @@ global.client = new Discord.Client({
     intents: [Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MEMBERS, Discord.Intents.FLAGS.GUILD_VOICE_STATES, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.GUILD_MESSAGE_REACTIONS, Discord.Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS, Discord.Intents.FLAGS.GUILD_PRESENCES]
 });
 const twitchAPI = require("twitch").default;
-const twitch = twitchAPI.withClientCredentials(
+global.twitch = twitchAPI.withClientCredentials(
     process.env.CLIENTID,
     process.env.CLIENTSECRET
 );
