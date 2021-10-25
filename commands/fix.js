@@ -1,18 +1,25 @@
 const commandName = "fix";
 const description = "Fixes stuff.";
-const options = [];
+const options = [{
+    name: "message",
+    description: "Message ID.",
+    required: true,
+    type: 4
+}];
 
 function run(interaction, options) {
     const fs = require("fs");
     let path = `files/OFP_live.json`;
-    let channel = "801447542796713995";
-    let message = "801829041900224522";
+    let channel = interaction.channelId;
+    //"801447542796713995";
+    let message = options.getInteger("message");
+    //"801829041900224522";
     let ttv_channel = "OtterFoxProductions";
     let url = `https://www.twitch.tv/${ttv_channel}`;
 
     twitch.helix.streams.getStreamByUserName(ttv_channel).then((stream, err) => {
         if (err) return console.error(err);
-        client.channels.cache.get(channel).messages.fetch(message).then(msg => {
+        client.channels.cache.get(channel).messages.fetch().then(msg => {
             let msg_timestamp = msg.editedTimestamp;
             let now_timestamp = Date.now();
             let diff = now_timestamp - msg_timestamp;
@@ -54,7 +61,7 @@ function run(interaction, options) {
 
                     msg.edit({
                         content: `${ttv_channel} is currently **LIVE**`,
-                        "embeds": [embed],
+                        embeds: [embed],
                         flags: null
                     });
                     console.log(msg);
@@ -63,7 +70,7 @@ function run(interaction, options) {
             } else if (stream == null && msg_state == "LIVE") {
                 msg.edit({
                     content: `${ttv_channel} is currently **OFFLINE**`,
-                    "embeds": []
+                    embeds: []
                 });
             }
         });
