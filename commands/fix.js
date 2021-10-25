@@ -24,7 +24,7 @@ function run(interaction, options) {
                 msg_state = "LIVE";
             }
 
-            if (stream != null && ((diff >= 60000 && msg_state == "OFFLINE") || (diff >= 600000 && msg_state == "LIVE"))) {
+            if (stream != null && ((msg_state == "OFFLINE") || (msg_state == "LIVE"))) {
 
                 stream.getGame().then(gameinfo => {
                     let streaminfo = {
@@ -57,9 +57,10 @@ function run(interaction, options) {
                         "embeds": [embed],
                         flags: null
                     });
+                    console.log(msg);
                 });
 
-            } else if (stream == null && diff >= 600000 && msg_state == "LIVE") {
+            } else if (stream == null && msg_state == "LIVE") {
                 msg.edit({
                     content: `${ttv_channel} is currently **OFFLINE**`,
                     "embeds": []
