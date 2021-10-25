@@ -12,7 +12,7 @@ function run(interaction, options) {
     let path = `files/OFP_live.json`;
     let channel = interaction.channelId;
     //"801447542796713995";
-    let message = options.getInteger("message");
+    let message = options.getString("message");
     //"801829041900224522";
     let ttv_channel = "OtterFoxProductions";
     let url = `https://www.twitch.tv/${ttv_channel}`;
