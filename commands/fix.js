@@ -64,7 +64,7 @@ function run(interaction, options) {
                     msg.edit({
                         content: `${ttv_channel} is currently **LIVE**`,
                         embeds: [embed],
-                        flags: new Discord.MessageFlags()
+                        flags: 0
                     });
                     console.log(msg);
                 });
