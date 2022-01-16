@@ -1,5 +1,7 @@
 const commandName = "react";
+const requiresResponse = false;
 const description = "Create or edit a reaction role.";
+const type = 1;
 const options = [{
     name: "create",
     description: "Create a new reaction role.",
@@ -85,6 +87,7 @@ function run(interaction, options) {
         content: 'Command executed!',
         ephemeral: true
     });
+    return requiresResponse;
 }
 
 function create(interaction, options) {
@@ -167,7 +170,7 @@ function edit(interaction, options) {
     let message = options.getString("message");
     let description = options.getString("description");
     if (!/^[0-9]+$/g.test(message)) return interaction.reply({
-        content: `Not a message id`
+        content: `Not a message id!`
     });
 
     interaction.channel.messages.fetch(message).then(m => {
@@ -195,7 +198,7 @@ function help(interaction) {
                 "value": "Which subcommand to call. \nCreate: create new reaction role. \nAdd: add role to already existing reaction role. \nRemove: remove role from already existing reaction role. \nEdit: edit description of already existing reaction role."
                 }, {
                 "name": "message",
-                "value": "The message id of the reaction role to edit (right click on message while devmode is on: \"Copy ID\")"
+                "value": "The message id of the reaction role to edit (right click on message while devmode is on: \"Copy ID\")."
                 }, {
                 "name": "role",
                 "value": "The role to add or remove."
@@ -214,6 +217,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 1;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}

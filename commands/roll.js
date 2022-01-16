@@ -1,4 +1,5 @@
 const commandName = "roll";
+const requiresResponse = false;
 const description = "Rolls some dice. Made for nerds.";
 const options = [{
     name: "d20",
@@ -153,6 +154,8 @@ function run(interaction, options) {
         embeds,
         ephemeral: interaction.channelId == '685873213837934612' ? false : true
     });
+
+    return requiresResponse;
 }
 
 function help(interaction) {
@@ -176,6 +179,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 0;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}

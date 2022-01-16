@@ -1,8 +1,7 @@
 function createCommands() {
     const fs = require("fs");
-    const test_ = '446642110519574559';
-    const ofp_ = '419578499020357643';
-    const guildId = ofp_;
+
+    const guildId = '419578499020357643';
     const guild = client.guilds.cache.get(guildId);
     let commands;
 
@@ -16,12 +15,7 @@ function createCommands() {
     console.log(commandList);
     for (let c of commandList) {
         let command = require(`../commands/${c}`);
-        commands.create({
-            name: command.name,
-            description: command.description,
-            options: command.options,
-            defaultPermission: false
-        }).then((com) => {
+        commands.create(command.commandOptions).then((com) => {
             let permissions = [];
             switch (command.level) {
                 case 0:

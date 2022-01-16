@@ -1,5 +1,7 @@
 const commandName = "modrole";
+const requiresResponse = false;
 const description = "Add/remove a role to the list of modded/authorized roles.";
+const type = 1;
 const options = [{
     name: "add",
     description: "Add a role to the list of modded/authorized roles.",
@@ -20,10 +22,6 @@ const options = [{
         required: true,
         type: 8
 }]
-}, {
-    name: "list",
-    description: "List all modded/authorized roles.",
-    type: 1
 }];
 
 function run(interaction, options) {
@@ -36,24 +34,12 @@ function run(interaction, options) {
     } else if (options.getSubcommand() === "remove") {
         let i = obj.roles.indexOf(role.id);
         if (i !== -1) obj.roles.splice(i, 1);
-    } else if (options.getSubcommand() === "list") {
-        let list = [];
-        for (let r of obj.roles) {
-            list.push(interaction.guild.roles.fetch(r).name);
-        }
-        return interaction.reply({
-            content: list.join(', ') || "none",
-            ephemeral: true
-        });
     }
-    require(`../protocols/commandHandler.js`).createCommands();
+
     fs.writeFile(`files/staff.json`, JSON.stringify(obj), err => {
         if (err) return console.error(err.message);
     });
-    interaction.reply({
-        content: "Command executed!",
-        ephemeral: true
-    })
+    return requiresResponse;
 }
 
 function help(interaction) {
@@ -76,6 +62,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 2;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}

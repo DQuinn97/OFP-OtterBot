@@ -1,5 +1,7 @@
 const commandName = "reply";
+const requiresResponse = false;
 const description = "Creates a message.";
+const type = 1;
 const options = [{
     name: "text",
     description: "Text to be replied with.",
@@ -12,6 +14,7 @@ function run(interaction, options) {
         content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
         ephemeral: true
     });
+    return requiresResponse;
 }
 
 function help(interaction) {
@@ -32,6 +35,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 3;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}

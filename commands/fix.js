@@ -1,4 +1,5 @@
 const commandName = "fix";
+const requiresResponse = false;
 const description = "Fixes stuff.";
 const options = [{
     name: "message",
@@ -83,6 +84,8 @@ function run(interaction, options) {
         content: `fixed(?)`,
         ephemeral: true
     });
+
+    return requiresResponse;
 }
 
 function help(interaction) {
@@ -103,6 +106,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 3;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}

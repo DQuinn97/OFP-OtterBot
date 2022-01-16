@@ -23,18 +23,50 @@ client.on("ready", () => {
 });
 
 client.on("interactionCreate", async (interaction) => {
-    if (!interaction.isCommand()) return;
-    const {
-        commandName,
-        options
-    } = interaction;
-    require(`./commands/${commandName}.js`).run(interaction, options);
+    if (interaction.isCommand() || interaction.isContextMenu()) {
+        let msgInt;
+        const {
+            commandName,
+            options
+        } = interaction;
+        let requiresResponse = require(`./commands/${commandName}.js`).run(interaction, options);
+
+        if (requiresResponse) {
+            msgInt = interaction;
+            const filter = (btnInt) => {
+                return msgInt.member.id == btnInt.member.id && btnInt.customId.split("_")[1] == msgInt.targetId;
+            };
+
+            const collector = msgInt.channel.createMessageComponentCollector({
+                filter,
+                max: 1,
+                time: 30000
+            });
+
+            collector.on("collect", (i) => {
+
+            });
+
+            collector.on("end", async (collection) => {
+                if (collection.first()) {
+                    await require(`./buttons/${collection.first().customId.split("_")[0]}.js`).run(interaction, msgInt);
+                } else {
+                    await msgInt.editReply({
+                        content: "Nuke expired.",
+                        components: []
+                    });
+                }
+                msgInt = null;
+            });
+        }
+    }
 });
 
+/*
 client.on("messageCreate", (message) => {
     if (message.author.bot) return;
-    //require(`./protocols/commandTest.js`).demand(message);
 });
+*/
 
 client.on("messageReactionAdd", (reaction, user) => {
     require(`./protocols/reactionHandler.js`).demand(reaction, user);

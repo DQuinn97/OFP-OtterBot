@@ -8,6 +8,7 @@ for (let c of dir) {
 }
 
 const commandName = "help";
+const requiresResponse = false;
 const description = "General help command.";
 const options = [{
     name: "command",
@@ -26,9 +27,7 @@ function run(interaction, options) {
         }
 
         interaction.reply({
-            content: `The list of existing commands is:\n\`${commandList.join(
-          "`\n`"
-        )}\`\n\nUse \`/help <command>\` to get the help page specific to each command.`,
+            content: `The list of existing commands is:\n\`${commandList.join("`\n`")}\`\n\nUse \`/help <command>\` to get the help page specific to each command.`,
             ephemeral: true
         });
 
@@ -49,6 +48,7 @@ function run(interaction, options) {
             if (err) return;
         });
     }
+    return requiresResponse;
 }
 
 function help(interaction) {
@@ -68,6 +68,10 @@ module.exports.run = run;
 module.exports.help = help;
 module.exports.level = 0;
 
-module.exports.name = commandName;
-module.exports.description = description;
-module.exports.options = options;
+module.exports.commandOptions = {
+    name: commandName,
+    type: 1,
+    description: description,
+    options: options,
+    defaultPermission: false
+}
