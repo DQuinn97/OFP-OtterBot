@@ -32,14 +32,14 @@ async function run(interaction, msgInt) {
     }
 
     msgInt.editReply({
-        content: `Timing out ${target.nickname}.`,
+        content: `Timing out ${target.displayName}.`,
         components: []
     });
 
-    await target.timeout(24 * 60 * 60 * 1000, `${msgInt.member.nickname} nuked ${target.nickname}`).catch(console.error);
+    await target.timeout(24 * 60 * 60 * 1000, `${msgInt.member.displayName} nuked ${target.displayName}`).catch(console.error);
 
     msgInt.editReply({
-        content: `Nuked ${target.nickname}!`,
+        content: `Nuked ${target.displayName}!`,
         components: []
     });
 }
