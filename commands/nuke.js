@@ -29,11 +29,7 @@ function help(interaction) {
     return interaction.reply({
         "embeds": [{
             "title": `${commandName}`,
-            "description": `${description}`,
-            "fields": [{
-                "name": "text",
-                "value": "The text you want the bot to reply with."
-                }]
+            "description": `${description}`
         }],
         ephemeral: true
     });
