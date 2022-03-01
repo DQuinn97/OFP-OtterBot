@@ -13,8 +13,8 @@ function run(interaction, options) {
     const guildId = '419578499020357643';
     const guild = client.guilds.cache.get(guildId);
 
-    let commands = client.application.commands;
-    let gcommands = guild.commands;
+    let commands = client.application.commands.cache;
+    let gcommands = guild.commands.cache;
 
     for (let c of commands) {
         c.delete();
