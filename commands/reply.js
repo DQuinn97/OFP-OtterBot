@@ -10,22 +10,21 @@ const options = [{
 }];
 
 function run(interaction, options) {
-    let embed = {
-        "title": `Rules and info confirmation`,
-        "color": 3329330,
-        "description": "React here if you've read and accepted the rules and info!"
+    let commands = client.application.commands;
+    let gcommands = guild.commands;
+
+    for (let c of commands) {
+        c.delete();
+    }
+    for (let g of gcommands) {
+        g.delete();
     }
 
-    interaction.channel.send({
-        "embeds": [embed]
-    });
-
     /*
-        interaction.reply({
-            content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
-            ephemeral: true
-        });
-        */
+    interaction.reply({
+        content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
+        ephemeral: true
+    });*/
     return requiresResponse;
 }
 

@@ -76,7 +76,7 @@ client.on("messageReactionRemove", (reaction, user) => {
 });
 
 client.on("guildMemberAdd", member => {
-    member.roles.add("522784830484905995");
+    //member.roles.add("522784830484905995");
 });
 client.on("voiceStateUpdate", (oldState, newState) => {
     require(`./protocols/voiceChannelHandler.js`).demand(oldState, newState);

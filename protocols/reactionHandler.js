@@ -1,4 +1,8 @@
 let handler = (m, r, u, x) => {
+	if (m.id == "948204616380739634") {
+		return m.guild.members.cache.get(u.id).roles.add("522784830484905995");
+    }
+
     if (!(m.author.bot && m.author.id == client.user.id && m.embeds && m.embeds[0].title && m.embeds[0].title.includes("Reaction Role"))) return;
     let role;
     let fields = m.embeds[0].fields;
