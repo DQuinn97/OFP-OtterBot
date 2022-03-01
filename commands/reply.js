@@ -5,29 +5,15 @@ const type = 1;
 const options = [{
     name: "text",
     description: "Text to be replied with.",
-    required: false,
+    required: true,
     type: 3
 }];
 
 function run(interaction, options) {
-    const guildId = '419578499020357643';
-    const guild = client.guilds.cache.get(guildId);
-
-    let commands = client.application.commands.cache;
-    let gcommands = guild.commands.cache;
-
-    for (let c of commands) {
-        c.delete();
-    }
-    for (let g of gcommands) {
-        g.delete();
-    }
-
-    /*
     interaction.reply({
         content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
         ephemeral: true
-    });*/
+    });
     return requiresResponse;
 }
 
