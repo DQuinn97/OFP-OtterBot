@@ -5,15 +5,27 @@ const type = 1;
 const options = [{
     name: "text",
     description: "Text to be replied with.",
-    required: true,
+    required: false,
     type: 3
 }];
 
 function run(interaction, options) {
-    interaction.reply({
-        content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
-        ephemeral: true
+    let embed = {
+        "title": `Rules and info confirmation`,
+        "color": 3329330,
+        "description": "React here if you've read and accepted the rules and info!"
+    }
+
+    interaction.channel.send({
+        "embeds": [embed]
     });
+
+    /*
+        interaction.reply({
+            content: `${options.getString("text") ? options.getString("text") : "This is a message."}`,
+            ephemeral: true
+        });
+        */
     return requiresResponse;
 }
 
