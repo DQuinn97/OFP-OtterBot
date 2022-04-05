@@ -15,11 +15,12 @@ client.setMaxListeners(0);
 
 client.on("ready", () => {
     require(`./protocols/init.js`).demand(client);
-    live_interval = setInterval(function () {
-        require(`./protocols/OFP_live.js`).demand(client, twitch);
-    }, 60000);
-
-    require(`./protocols/commandHandler.js`).createCommands();
+    if (client.application.id == "629045876693663755") {
+        live_interval = setInterval(function () {
+            require(`./protocols/OFP_live.js`).demand(client, twitch);
+        }, 60000);
+    }
+    require(`./protocols/commandHandler.js`).setCommands();
 });
 
 client.on("interactionCreate", async (interaction) => {

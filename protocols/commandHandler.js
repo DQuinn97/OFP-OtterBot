@@ -1,4 +1,4 @@
-function createCommands() {
+function setCommands() {
     const fs = require("fs");
 
     const guildId = '419578499020357643';
@@ -12,15 +12,22 @@ function createCommands() {
     }
 
     let commandList = getCommands();
+    let commandTemp = [];
     console.log(commandList);
     for (let c of commandList) {
         let command = require(`../commands/${c}`);
-        commands.create(command.commandOptions).then((com) => {
+        commandTemp.push(command.commandOptions);
+    }
+    commands.set(commandTemp).then(newCommands => {
+        for (let c of newCommands) {
+            let command = require(`../commands/${c[1].name}`);
             let permissions = [];
             switch (command.level) {
                 case 0:
-                    com.edit({
-                        defaultPermission: true
+                    commands.fetch(c[0]).then(fc => {
+                        fc.edit({
+                            defaultPermission: true
+                        });
                     });
                 case 1:
                     let roles = JSON.parse(fs.readFileSync(`files/staff.json`, "utf8")).roles;
@@ -51,33 +58,21 @@ function createCommands() {
                 default:
                     break;
             }
-            com.permissions.add({
-                permissions: permissions
+            commands.fetch(c[0]).then(fc => {
+                fc.permissions.set({
+                    permissions: permissions
+                });
             });
-        });
-    }
+        }
+    });
+
+    //guild.commands.fetch().then(c => console.log(c));
 }
 
 function getCommands() {
     const fs = require("fs");
-
     let commandList = fs.readdirSync(`./commands/`);
-    /*console.log("\nCurrent directory filenames:");
-    commandList.forEach(file => {
-        console.log(file);
-    });*/
     return commandList;
-    /*
-    let dir = fs.readdirSync(`./commands/`, (err, files) => {
-        if (err) return console.log(err);
-        for (let f of files) {
-            if (f != "DEFAULT.txt") {
-                commandList.push(f.substring(0, f.length - 3));
-            }
-        }
-        return commandList;
-    });
-    */
 }
 module.exports.getCommands = getCommands;
-module.exports.createCommands = createCommands;
+module.exports.setCommands = setCommands;
