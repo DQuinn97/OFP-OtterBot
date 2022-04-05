@@ -30,7 +30,7 @@ function run(interaction, options) {
 
     let embeds = [{
         "title": `${interaction.member.displayName} rolled ${amount}D${die}:`,
-        "description": `Value${results.length > 1? 's' : ''}: ${results.join(', ')}`
+        "description": `Value${results.length > 1? 's' : ''}: ${results.join(', ')}\n\nSum: ${results.reduce((a, b) => (+a)+(+b))}`
         }]
 
     let allowed_channels = ['946105760897699870', '960164185092812811'];
