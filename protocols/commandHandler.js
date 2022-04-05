@@ -10,8 +10,9 @@ function setCommands() {
     } else {
         commands = client.application.commands;
     }
-	guild.commands.set([])
-	client.application.commands.set([])
+	guild.commands.set([]);
+	client.guilds.cache.get('446642110519574559').commands.set([]);
+	client.application.commands.set([]);
 	
     let commandList = getCommands();
     let commandTemp = [];
@@ -68,7 +69,10 @@ function setCommands() {
         }
     });
 
-    //guild.commands.fetch().then(c => console.log(c));
+	console.log("Guild commands: \n");
+    guild.commands.fetch().then(c => console.log(c));
+	console.log("Application commands: \n");
+	client.application.commands.fetch().then(c => console.log(c))
 }
 
 function getCommands() {

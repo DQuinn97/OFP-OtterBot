@@ -48,11 +48,8 @@ function help(interaction) {
             "title": `${commandName}`,
             "description": `${description}`,
             "fields": [{
-                "name": "dice",
-                "value": "The type of dice to roll."
-                }, {
-                "name": "amount",
-                "value": "How many dice to roll."
+                "name": "dice descriptor",
+                "value": "<amount> d <die>"
                 }]
         }],
         ephemeral: true
