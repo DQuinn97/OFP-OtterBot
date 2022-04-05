@@ -20,6 +20,7 @@ function run(interaction, options) {
     }
 
     let [amount, die] = descriptor.split("d");
+	amount = amount ? amount : 1;
     let results = [];
 
     for (let i = 0; i < amount; i++) {

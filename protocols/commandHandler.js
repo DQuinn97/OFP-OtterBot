@@ -10,7 +10,9 @@ function setCommands() {
     } else {
         commands = client.application.commands;
     }
-
+	guild.commands.set([])
+	client.application.commands.set([])
+	
     let commandList = getCommands();
     let commandTemp = [];
     console.log(commandList);
