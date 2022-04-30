@@ -89,7 +89,6 @@ client.on("voiceStateUpdate", (oldState, newState) => {
     require(`./protocols/voiceChannelHandler.js`).demand(oldState, newState);
 });
 
-//BOTTOM CODE!
 client.login(process.env.TOKEN);
 
 function refresh() {
