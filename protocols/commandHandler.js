@@ -1,7 +1,7 @@
 function setCommands() {
     const fs = require("fs");
 
-    const guildId = '419578499020357643';
+    const guildId = process.env.GUILDID;
     const guild = client.guilds.cache.get(guildId);
     let commands;
 
@@ -11,11 +11,10 @@ function setCommands() {
         commands = client.application.commands;
     }
 
-	client.application.commands.set([]);
-	
+    client.application.commands.set([]);
+
     let commandList = getCommands();
     let commandTemp = [];
-    console.log(commandList);
     for (let c of commandList) {
         let command = require(`../commands/${c}`);
         commandTemp.push(command.commandOptions);
@@ -60,16 +59,27 @@ function setCommands() {
                 default:
                     break;
             }
+            /*
             commands.fetch(c[0]).then(fc => {
                 fc.permissions.set({
                     permissions: permissions
                 });
             });
+            */
         }
     });
+}
 
-	console.log("Application commands: \n");
-	client.application.commands.fetch().then(c => console.log(c));
+function permit(interaction, commandName) {
+    let command = require(`../commands/${commandName}.js`);
+    switch (command.level) {
+        case 3:
+            return interaction.member.id == '236893311212847104';
+            break;
+        default:
+            return true;
+            break;
+    }
 }
 
 function getCommands() {
@@ -79,3 +89,4 @@ function getCommands() {
 }
 module.exports.getCommands = getCommands;
 module.exports.setCommands = setCommands;
+module.exports.permit = permit;

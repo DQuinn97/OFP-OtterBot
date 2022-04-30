@@ -30,6 +30,12 @@ client.on("interactionCreate", async (interaction) => {
             commandName,
             options
         } = interaction;
+
+        if (!require(`./protocols/commandHandler.js`).permit(interaction, commandName)) return interaction.reply({
+            content: `You do not have access to this dev command.`,
+            ephemeral: true
+        });
+
         let requiresResponse = require(`./commands/${commandName}.js`).run(interaction, options);
 
         if (requiresResponse) {
